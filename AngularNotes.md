@@ -197,6 +197,66 @@ Directives are Instructions in the DOM
     this is like a if else statement really.
 
 - ngStyle
+    it's an atribute directive, i.e. doesn't change the structure of the DOM just changes the attributes 
+    of the element like colour and so on.
+
+    usage:
+        in the HTML
+            <p [ngStyle]="{backgroundColor: getColor()}">Server with ID {{serverId}} is {{getServerStatus()}}</p> 
+
+            in this case we are using a method but it can be a string like 'green'
+
+        in the .ts file just define the method getColor() to return a string for the colour
+
+- ngClass
+    is related to ngStyle, but it let's us remove or add classes to the element.
+
+    usage:
+        in the HTML
+            <p 
+                [ngClass]="{online: serverStatus === 'online'}">
+                Server with ID {{serverId}} is {{getServerStatus()}}
+            </p>
+
+        in the .ts file
+            styles: [`
+                .online {
+                    color: white;
+                }`
+            ],
+
+            above is using the inline template but you can define a .css file and define the 
+            online class in there instead. probably a better option.
+
+- ngFor
+    used to output lists
+
+    usage:
+        you need to pass it something to iterate throught so an array is a convenient structure
+
+            servers = ['TestServer', 'TestServer2'];
+            every time you add a server just push it into the array.
+
+        then in the HTML
+            <app-server *ngFor="let server of servers"></app-server>
+
+            this is similar to the for of loop
+            the server is the individual element in the servers array.
+
+    to get the index from ngFor just add ;let i = index" to the ngFor setatement
+        <app-server *ngFor="let server of servers; let i = index"></app-server>
+
+    not quite sure of the usefulness of it...
+
+    
+
+
+
+
+
+
+
+
 
 
 
